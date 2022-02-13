@@ -32,7 +32,7 @@
       <v-app-bar-title> Page Level DocBlock </v-app-bar-title>
       <v-icon right> {{ quote }} </v-icon>
       <v-spacer></v-spacer>
-      <v-btn color="primary" depressed>
+      <v-btn color="primary" depressed v-show="show_delete_button">
         <v-icon left>
           {{ bin }}
         </v-icon>
@@ -62,28 +62,39 @@
         </v-fab-transition>
       </v-sheet>
 
-      <v-list>
+      <!-- <v-list>
         <v-list-item v-for="n in 5" :key="n" link>
           <v-list-item-content>
             <v-list-item-title>Item {{ n }}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
+      </v-list> -->
+      <v-list>
+        <v-list-item>
+          <v-list-item-content>
+            <v-list-item-title class="v-center"
+              ><v-icon left> {{ phpIcon }} </v-icon> Page Doc
+              1</v-list-item-title
+            >
+          </v-list-item-content>
+        </v-list-item>
       </v-list>
     </v-navigation-drawer>
 
-    <v-main class="pa-0 ma-1">
+    <v-main class="pa-6 ma-1">
       <v-container>
         <v-row>
           <aboutWindow
             v-show="show_about_window"
             @perma_hide_about="perma_hide_about"
           />
+          <docGenRow v-show="!show_about_window" />
         </v-row>
       </v-container>
     </v-main>
 
     <v-footer app color="transparent" height="72" inset>
-      <div class="text-center">
+      <div class="text-center" v-show="show_generate_button">
         <v-btn rounded color="primary" dark>
           <v-icon left> {{ hammer }} </v-icon> Generate DocBlock</v-btn
         >
@@ -99,11 +110,15 @@ import { mdiHammer } from "@mdi/js";
 import { mdiPlusCircle } from "@mdi/js";
 import { mdiCommentQuote } from "@mdi/js";
 import { mdiDelete } from "@mdi/js";
+import { mdiLanguagePhp } from "@mdi/js";
+import { mdiLanguageJavascript } from "@mdi/js";
 import aboutWindow from "./aboutWindow.vue";
+import docGenRow from "./docGenRow.vue";
 
 export default {
   components: {
     aboutWindow,
+    docGenRow,
   },
 
   data: () => ({
@@ -114,7 +129,11 @@ export default {
     plus: mdiPlusCircle,
     quote: mdiCommentQuote,
     bin: mdiDelete,
+    phpIcon: mdiLanguagePhp,
+    jsIcon: mdiLanguageJavascript,
 
+    show_delete_button: false,
+    show_generate_button: false,
     show_about_window: false,
   }),
 
@@ -131,7 +150,7 @@ export default {
       localStorage.setItem("hide_about_page", true);
     },
     show_about_or_not: function () {
-      if (localStorage.getItem("hide_about_page") == 'true') {
+      if (localStorage.getItem("hide_about_page") == "true") {
         return false;
       } else {
         return true;
