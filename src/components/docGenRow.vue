@@ -1,7 +1,7 @@
 <template>
   <v-row>
     <v-col>
-      <v-card class="elevation-12" rounded="lg" v-show="!language_picked">
+      <v-card class="elevation-12" rounded="lg">
         <v-toolbar dark r class="v-center">
           <v-toolbar-title class="v-center">Options</v-toolbar-title>
         </v-toolbar>
@@ -34,7 +34,10 @@
       </v-card>
     </v-col>
 
-    <finalDocGen v-show="language_picked" :text_prop="js_sample" />
+    <finalDocGen
+      v-if="language_picked"
+      v-bind:text_prop="docblock_options.textblock"
+    />
     <sampleDocGen v-show="!language_picked" />
   </v-row>
 </template>
@@ -42,6 +45,7 @@
 import { mdiInformationOutline } from "@mdi/js";
 import { mdiLanguagePhp } from "@mdi/js";
 import { mdiLanguageJavascript } from "@mdi/js";
+import Page_Doc_PHP from "../classes/Page_Doc_PHP";
 import sampleDocGen from "./sampleDocGen.vue";
 import "vue-code-highlight/themes/duotone-sea.css";
 import Sample from "../classes/Sample.js";
@@ -55,7 +59,7 @@ export default {
   },
   data: () => ({
     about: mdiInformationOutline,
-    language_picked: true,
+    language_picked: false,
     doc: "",
     phpIcon: mdiLanguagePhp,
     jsIcon: mdiLanguageJavascript,
@@ -63,9 +67,11 @@ export default {
     docblock_lang: "js",
     js_sample: Sample.sample_text_js,
     php_sample: Sample.sample_text_php,
+    textblock: String,
 
     docblock_options: {
-      textblock: "test",
+      textblock: Sample.sample_text_js,
+      docblock_lang: "js",
     },
   }),
 
@@ -87,8 +93,20 @@ export default {
       return lang;
     },
 
-    js_selected() {},
-    php_selected() {},
+    js_selected() {
+      console.log("js selected");
+      this.docblock_options.docblock_lang = "js";
+      this.docblock_options.textblock = "JAAAAAAAAAAAAAAAAAAAAAVA";
+      this.language_picked = true;
+    },
+    php_selected() {
+      console.log("php selected");
+      this.docblock_options.docblock_lang = "php";
+      this.language_picked = true;
+      this.php_doc = new Page_Doc_PHP("script 1");
+      this.docblock_options.textblock = this.php_doc.init_text();
+      console.log(this.php_doc);
+    },
   },
 };
 </script>

@@ -15,17 +15,15 @@
         </v-tooltip>
       </v-toolbar>
 
-      <code-highlight class="pa-5">
-        <pre ref="textToCopy"
-          >{{ text_prop }}
-          </pre
-        >
-      </code-highlight>
+      <div class="pa-5">
+        <pre
+          class="language-javascript"
+        ><code class=" language-javascript text-col"> {{text_prop}}</code></pre>
+      </div>
     </v-card>
   </v-col>
 </template>
 <script>
-import CodeHighlight from "vue-code-highlight/src/CodeHighlight.vue";
 import "vue-code-highlight/themes/duotone-sea.css";
 import "vue-code-highlight/themes/window.css";
 import { clipboard } from "vue-clipboards";
@@ -33,15 +31,10 @@ import { mdiContentCopy } from "@mdi/js";
 
 export default {
   props: ["text_prop"],
-
   data() {
     return {
       copy: mdiContentCopy,
     };
-  },
-
-  components: {
-    CodeHighlight,
   },
 
   directives: {
@@ -51,6 +44,15 @@ export default {
 </script>
 
 <style lang="scss">
+.theme--dark.v-application code {
+  background-color: rgba(255, 255, 255, 0);
+  color: #e2e2e2 !important;
+}
+
+.text-col {
+  color: #e2e2e2;
+}
+
 .token.comment,
 .token.prolog,
 .token.doctype,

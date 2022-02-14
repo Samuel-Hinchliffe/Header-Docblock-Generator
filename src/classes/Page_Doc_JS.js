@@ -8,7 +8,7 @@
  * Created at: 12/02/2022
  */
 
-import Page_Doc from "Page_Doc";
+import Page_Doc from "./Page_Doc";
 
 export default class Page_Doc_JS extends Page_Doc {
   constructor(name) {

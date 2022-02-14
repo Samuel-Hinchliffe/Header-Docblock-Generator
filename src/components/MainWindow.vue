@@ -145,7 +145,6 @@ export default {
 
   methods: {
     perma_hide_about() {
-      console.log("clicked");
       this.show_about_window = false;
       localStorage.setItem("hide_about_page", true);
     },

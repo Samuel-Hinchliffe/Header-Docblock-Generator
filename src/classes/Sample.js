@@ -29,7 +29,8 @@ export default class Sample {
   * @license Apache-2.0
   */`;
 
-  static sample_text_php = `/**
+  static /* It's a sample of the text that will be generated. */
+  sample_text_php = `/**
   * Created by Samuel Hinchliffe Inc. PHP
   * @author Samuel Hinchliffe <sam.hinchliffe.work@gmail.com>
   * @see    [Linkedin] {@link https://www.linkedin.com/in/samuel-hinchliffe-2bb5801a5/}
