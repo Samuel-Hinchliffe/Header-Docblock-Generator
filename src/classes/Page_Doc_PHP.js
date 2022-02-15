@@ -22,17 +22,117 @@ export default class Page_Doc_PHP extends Page_Doc {
     this.author_name = "Machiavelli";
     this.work_email = "machiavelli@medici.gov";
     this.personal_email = "machii@hotmail.com";
-    this.personal_linkedin = "linkedin.com/feed/";
+    this.personal_linkedin = "linkedin.com";
+    this.version = "1.2.1";
+    this.package = "Medici JWT APIs";
+    this.since_file_created = `${this.version}`;
+    this.see_summary_link = `https://en.wikipedia.org/wiki/Special:Random`;
+    this.summary = "A summary of this file. Whatever that may be. ";
+    this.created_at_time = "";
+    this.company_website = "www.google.com";
+    this.second_see_link = "www.phpdoc.org";
+    this.copyright = `Copyright (c) 1999-2022 ${this.company_name}`;
+    this.license = "Apache-2.0";
+
+    // Alignment
 
     // Line enabled or not
     this.created_by_enabled = true;
     this.author_line_enabled = true;
     this.linked_line_enabled = true;
+    this.version_line_enabled = true;
+    this.package_line_enabled = true;
+    this.since_file_created_line_enabled = true;
+    this.see_summary_link_enabled = true;
+    this.summary_enabled = true;
+    this.created_at_time_enabled = true;
+    this.company_website_enabled = true;
+    this.second_see_link_enabled = true;
+    this.copyright_enabled = true;
+    this.license_enabled = true;
 
     // Lines
+    this.build();
+  }
+
+  build() {
     this.line_created_by_company = this.generate_created_by() || "";
     this.line_author = this.generate_email_author() || "";
     this.line_linkedin = this.generate_personal_linkedin() || "";
+
+    this.line_version = this.generate_version() || "";
+    this.line_package = this.generate_package() || "";
+    this.line_since_file_created = this.generate_since_file_created() || "";
+    this.line_summary_link = this.generate_see_summary_link() || "";
+    this.line_summary = this.generate_see_summary() || "";
+
+    this.line_created_at_time = this.generate_date() || "";
+    this.line_company_website = this.generate_company_website() || "";
+    this.line_second_see_line = this.generate_second_see_link() || "";
+    this.line_copyright = this.generate_copyright_line() || "";
+    this.line_license = this.generate_license() || "";
+    return this.init_text();
+  }
+
+  generate_license() {
+    if (this.license_enabled && this.license) {
+      return `\n${this.spacer}* @license ${this.license}`;
+    }
+  }
+
+  generate_copyright_line() {
+    if (this.copyright && this.copyright_enabled && this.company_name) {
+      this.copyright = `Copyright (c) 1999-2022 ${this.company_name}`;
+
+      return `\n${this.spacer}* @copyright ${this.copyright}`;
+    }
+  }
+
+  generate_second_see_link() {
+    if (this.second_see_link && this.second_see_link_enabled) {
+      return `\n${this.spacer}* @see ${this.second_see_link}`;
+    }
+  }
+
+  generate_company_website() {
+    if (this.company_website_enabled && this.company_website) {
+      return `\n${this.spacer}* @see ${this.company_website} Website`;
+    }
+  }
+
+  generate_date() {
+    if (this.created_at_time_enabled) {
+      let date = new Date();
+      let day = date.getDate();
+      let month = date.getMonth() + 1;
+      let year = date.getFullYear();
+      return `\n${this.spacer}* Created at: ${day}/${month}/${year}`;
+    }
+  }
+
+  generate_see_summary() {
+    if (this.summary && this.summary_enabled) {
+      return `\n${this.spacer}* @overview ${this.summary}`;
+    }
+  }
+
+  generate_see_summary_link() {
+    if (this.see_summary_link && this.see_summary_link_enabled) {
+      return `\n${this.spacer}* @see ${this.see_summary_link}`;
+    }
+  }
+
+  generate_since_file_created() {
+    this.since_file_created = this.version;
+    if (this.since_file_created && this.since_file_created_line_enabled) {
+      return `\n${this.spacer}* @since File available since Release ${this.since_file_created}`;
+    }
+  }
+
+  generate_package() {
+    if (this.package && this.package_line_enabled) {
+      return `\n${this.spacer}* @package ${this.package}`;
+    }
   }
 
   generate_created_by() {
@@ -41,10 +141,16 @@ export default class Page_Doc_PHP extends Page_Doc {
     }
   }
 
+  generate_version() {
+    if (this.version_line_enabled && this.version) {
+      return `\n${this.spacer}* @version ${this.version}`;
+    }
+  }
+
   generate_personal_linkedin() {
     if (this.linked_line_enabled) {
       return this.personal_linkedin
-        ? `\n${this.spacer}* @link ${this.personal_linkedin} Author's Linkedin `
+        ? `\n${this.spacer}* @link   ${this.personal_linkedin} Author's Linkedin `
         : "";
     }
   }
@@ -71,17 +177,8 @@ export default class Page_Doc_PHP extends Page_Doc {
 
   init_text() {
     return `/** ${this.line_created_by_company}${this.line_author}${this.line_linkedin}
-   *
-   * @version 1.0.0
-   * @overview This is the header documentation for the header documentation generator.
-   * Something like this will be generated. You should put this at the top of the file
-   * that you're working on. 
-   * 
-   * Created at: 12/02/2022
-   * @see    [Website]  {@link https://genrandom.com/cats/}
-   * @see    [JSDOC]    {@link https://jsdoc.app/}
-   * @copyright (c) 1999-2022 Samuel Hinchliffe Inc.
-   * @license Apache-2.0
+   *${this.line_version}${this.line_package}${this.line_since_file_created}${this.line_summary_link}${this.line_summary}
+   * ${this.line_created_at_time}${this.line_company_website}${this.line_second_see_line}${this.line_copyright}${this.line_license}
    */`;
   }
 }

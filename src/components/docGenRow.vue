@@ -1,7 +1,7 @@
 <template>
   <v-row>
     <v-col>
-      <v-card class="elevation-12" rounded="lg">
+      <v-card class="elevation-12" rounded="lg" v-if="!language_picked">
         <v-toolbar dark r class="v-center">
           <v-toolbar-title class="v-center">Options</v-toolbar-title>
         </v-toolbar>
@@ -30,6 +30,142 @@
             </v-icon>
             PHP
           </v-btn>
+        </v-card-text>
+      </v-card>
+
+      <v-card
+        class="elevation-12"
+        rounded="lg"
+        v-if="language_picked && docblock_options.docblock_lang === 'php'"
+      >
+        <v-toolbar dark r class="v-center">
+          <v-toolbar-title class="v-center">PHP Options</v-toolbar-title>
+        </v-toolbar>
+        <v-card-text
+          >Fill out the details below and watch the DocBlock automatically
+          update</v-card-text
+        >
+        <div
+          style="display: flex; justify-content: center; flex-wrap: wrap"
+          class="pa-5"
+        >
+          <v-row justify="space-around">
+            <v-col cols="12" lg="6">
+              <v-text-field
+                label="Company Name"
+                v-model="php_doc.company_name"
+              ></v-text-field>
+            </v-col>
+            <v-col cols="12" lg="6">
+              <v-form ref="form">
+                <v-text-field
+                  label="Author Name"
+                  v-model="php_doc.author_name"
+                ></v-text-field>
+              </v-form>
+            </v-col>
+          </v-row>
+
+          <v-row justify="space-around">
+            <v-col cols="12" lg="6">
+              <v-text-field
+                label="Work Email"
+                v-model="php_doc.work_email"
+              ></v-text-field>
+            </v-col>
+            <v-col cols="12" lg="6">
+              <v-form ref="form">
+                <v-text-field
+                  label="Personal Email"
+                  v-model="php_doc.personal_email"
+                ></v-text-field>
+              </v-form>
+            </v-col>
+          </v-row>
+
+          <v-row justify="space-around">
+            <v-col cols="12" lg="6">
+              <v-text-field
+                label="Personal Linkedin URL"
+                v-model="php_doc.personal_linkedin"
+              ></v-text-field>
+            </v-col>
+            <v-col cols="12" lg="6">
+              <v-form ref="form">
+                <v-text-field
+                  label="Software Version"
+                  v-model="php_doc.version"
+                ></v-text-field>
+              </v-form>
+            </v-col>
+          </v-row>
+
+          <v-row justify="space-around">
+            <v-col cols="12" lg="6">
+              <v-text-field
+                label="Package Name / Namespace"
+                v-model="php_doc.package"
+              ></v-text-field>
+            </v-col>
+            <v-col cols="12" lg="6">
+              <v-form ref="form">
+                <v-text-field
+                  label="Summary See URL"
+                  v-model="php_doc.see_summary_link"
+                ></v-text-field>
+              </v-form>
+            </v-col>
+          </v-row>
+
+          <v-row justify="space-around">
+            <v-col cols="12" lg="6">
+              <v-text-field
+                label="Company Website"
+                v-model="php_doc.company_website"
+              ></v-text-field>
+            </v-col>
+            <v-col cols="12" lg="6">
+              <v-form ref="form">
+                <v-text-field
+                  label="Copyright Date"
+                  v-model="php_doc.copyright"
+                ></v-text-field>
+              </v-form>
+            </v-col>
+          </v-row>
+
+          <v-row justify="space-around">
+            <v-col cols="12" lg="6">
+              <v-text-field
+                label="Licence"
+                v-model="php_doc.license"
+              ></v-text-field>
+            </v-col>
+            <v-col cols="12" lg="6">
+              <v-form ref="form">
+                <v-text-field
+                  label="Overview"
+                  v-model="php_doc.summary"
+                ></v-text-field>
+              </v-form>
+            </v-col>
+          </v-row>
+        </div>
+      </v-card>
+
+      <v-card
+        class="elevation-12"
+        rounded="lg"
+        v-if="language_picked && docblock_options.docblock_lang === 'js'"
+      >
+        <v-toolbar dark r class="v-center">
+          <v-toolbar-title class="v-center">Options</v-toolbar-title>
+        </v-toolbar>
+        <v-card-text
+          >Pick a language in which you wish to generate your page level doc
+        </v-card-text>
+        <v-card-text style="display: flex; justify-content: center">
+          I AM THE JS
         </v-card-text>
       </v-card>
     </v-col>
@@ -68,12 +204,26 @@ export default {
     js_sample: Sample.sample_text_js,
     php_sample: Sample.sample_text_php,
     textblock: String,
+    php_doc: Object,
 
     docblock_options: {
       textblock: Sample.sample_text_js,
       docblock_lang: "js",
     },
   }),
+
+  watch: {
+    php_doc: {
+      // This will let Vue know to look inside the array
+      deep: true,
+
+      // We have to move our method to a handler field
+      handler() {
+        console.log("PHP CHANGED!!!");
+        this.docblock_options.textblock = this.php_doc.build();
+      },
+    },
+  },
 
   methods: {
     language_picked_method(lang) {
