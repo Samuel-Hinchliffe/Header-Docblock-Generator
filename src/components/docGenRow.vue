@@ -1,6 +1,6 @@
 <template>
   <v-row>
-    <v-col>
+    <v-col class="col">
       <v-card class="elevation-12" rounded="lg" v-if="!language_picked">
         <v-toolbar dark r class="v-center">
           <v-toolbar-title class="v-center">Options</v-toolbar-title>
@@ -39,12 +39,29 @@
         v-if="language_picked && docblock_options.docblock_lang === 'php'"
       >
         <v-toolbar dark r class="v-center">
-          <v-toolbar-title class="v-center">PHP Options</v-toolbar-title>
+          <v-toolbar-title class="v-center">
+            <v-btn icon  v-on:click="go_back()" left>
+              <v-icon>{{ back_arrow }}</v-icon>
+            </v-btn>
+
+            PHP Options</v-toolbar-title
+          >
         </v-toolbar>
         <v-card-text
           >Fill out the details below and watch the DocBlock automatically
           update</v-card-text
         >
+        <div
+          style="display: flex; justify-content: space-evenly; flex-wrap: wrap"
+          class="pa-1"
+        >
+          <v-btn depressed color="primary" v-on:click="php_doc.clear_fields()">
+            Clear Form
+          </v-btn>
+          <v-btn depressed color="primary" v-on:click="php_doc.load_default()">
+            Restore Default
+          </v-btn>
+        </div>
         <div
           style="display: flex; justify-content: center; flex-wrap: wrap"
           class="pa-5"
@@ -159,7 +176,11 @@
         v-if="language_picked && docblock_options.docblock_lang === 'js'"
       >
         <v-toolbar dark r class="v-center">
-          <v-toolbar-title class="v-center">Options</v-toolbar-title>
+          <v-toolbar-title class="v-center">
+            <v-btn icon v-on:click="go_back()" left>
+              <v-icon>{{ back_arrow }}</v-icon>
+            </v-btn>
+          </v-toolbar-title>
         </v-toolbar>
         <v-card-text
           >Pick a language in which you wish to generate your page level doc
@@ -187,6 +208,8 @@ import "vue-code-highlight/themes/duotone-sea.css";
 import Sample from "../classes/Sample.js";
 import "vue-code-highlight/themes/window.css";
 import finalDocGen from "./finalDocGen.vue";
+import { mdiArrowLeftBoldCircle } from "@mdi/js";
+import Docblock_Storage from "../classes/DocBlock_Storage.js";
 
 export default {
   components: {
@@ -199,12 +222,14 @@ export default {
     doc: "",
     phpIcon: mdiLanguagePhp,
     jsIcon: mdiLanguageJavascript,
+    back_arrow: mdiArrowLeftBoldCircle,
     docGen_area: ``,
     docblock_lang: "js",
     js_sample: Sample.sample_text_js,
     php_sample: Sample.sample_text_php,
     textblock: String,
     php_doc: Object,
+    doc_storage: new Docblock_Storage(),
 
     docblock_options: {
       textblock: Sample.sample_text_js,
@@ -219,13 +244,19 @@ export default {
 
       // We have to move our method to a handler field
       handler() {
-        console.log("PHP CHANGED!!!");
         this.docblock_options.textblock = this.php_doc.build();
+        this.doc_storage.add_2_local_storage(this.php_doc, "php_doc");
       },
     },
   },
 
   methods: {
+    go_back() {
+      this.docblock_lang = null;
+      this.docblock_options.docblock_lang = null;
+      this.language_picked = false;
+    },
+
     language_picked_method(lang) {
       this.docblock_lang = lang;
 
@@ -244,7 +275,6 @@ export default {
     },
 
     js_selected() {
-      console.log("js selected");
       this.docblock_options.docblock_lang = "js";
       this.docblock_options.textblock = "JAAAAAAAAAAAAAAAAAAAAAVA";
       this.language_picked = true;
@@ -253,9 +283,18 @@ export default {
       console.log("php selected");
       this.docblock_options.docblock_lang = "php";
       this.language_picked = true;
-      this.php_doc = new Page_Doc_PHP("script 1");
-      this.docblock_options.textblock = this.php_doc.init_text();
-      console.log(this.php_doc);
+
+      // Is this already populated?
+      console.log("sam lookey");
+      console.log(this.doc_storage);
+      if (this.doc_storage?.Docblock_Storage?.name === "script 1") {
+        this.php_doc = new Page_Doc_PHP("script 1");
+        this.php_doc.load_from_storage(this.doc_storage.Docblock_Storage);
+      } else {
+        this.php_doc = new Page_Doc_PHP("script 1");
+        this.docblock_options.textblock = this.php_doc.init_text();
+        console.log(this.php_doc);
+      }
     },
   },
 };
@@ -284,6 +323,21 @@ a {
   }
 
   .v-icon__svg: hover {
+    fill: white;
+  }
+}
+
+.v-center {
+  display: flex;
+  display: flex;
+  align-content: center;
+  align-items: center;
+}
+a {
+  .v-icon__svg {
+    transition: 200ms ease-in-out;
+  }
+  .v-icon__svg:hover {
     fill: white;
   }
 }

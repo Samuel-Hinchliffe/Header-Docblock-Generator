@@ -15,7 +15,30 @@ import Page_Doc from "./Page_Doc";
 export default class Page_Doc_PHP extends Page_Doc {
   constructor(name) {
     super(name, "php");
+    this.load_default()
+  }
 
+  clear_fields(){
+    this.spacer = "   ";
+    this.company_name = "";
+    this.author_name = "";
+    this.work_email = "";
+    this.personal_email = "";
+    this.personal_linkedin = "";
+    this.version = "";
+    this.package = "";
+    this.since_file_created = `${this.version}`;
+    this.see_summary_link = ``;
+    this.summary = "";
+    this.created_at_time = "";
+    this.company_website = "";
+    this.second_see_link = "";
+    this.copyright = ``;
+    this.license = "";
+    this.build()
+  }
+
+  load_default(){
     // Line vars
     this.spacer = "   ";
     this.company_name = "Medici";
@@ -50,6 +73,30 @@ export default class Page_Doc_PHP extends Page_Doc {
     this.second_see_link_enabled = true;
     this.copyright_enabled = true;
     this.license_enabled = true;
+
+    // Lines
+    this.build();
+  }
+
+  load_from_storage(obj){
+    console.log('loading from storage');
+    console.log(obj)
+    this.spacer = obj.spacer;
+    this.company_name = obj.company_name;
+    this.author_name = obj.author_name;
+    this.work_email = obj.work_email;
+    this.personal_email = obj.personal_email;
+    this.personal_linkedin = obj.personal_linkedin
+    this.version = obj.version;
+    this.package = obj.package;
+    this.since_file_created = obj.since_file_created;
+    this.see_summary_link = obj.see_summary_link;
+    this.summary = obj.summary;
+    this.created_at_time = obj.created_at_time;
+    this.company_website = obj.company_website;
+    this.second_see_link = obj.second_see_link;
+    this.copyright = obj.copyright
+    this.license = obj.license;
 
     // Lines
     this.build();

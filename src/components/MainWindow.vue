@@ -40,7 +40,7 @@
       </v-btn>
     </v-app-bar>
 
-    <v-navigation-drawer
+    <!-- <v-navigation-drawer
       v-model="drawer"
       app
       width="200"
@@ -62,13 +62,6 @@
         </v-fab-transition>
       </v-sheet>
 
-      <!-- <v-list>
-        <v-list-item v-for="n in 5" :key="n" link>
-          <v-list-item-content>
-            <v-list-item-title>Item {{ n }}</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-      </v-list> -->
       <v-list>
         <v-list-item>
           <v-list-item-content>
@@ -79,16 +72,16 @@
           </v-list-item-content>
         </v-list-item>
       </v-list>
-    </v-navigation-drawer>
+    </v-navigation-drawer> -->
 
     <v-main class="pa-6 ma-1">
-      <v-container>
+      <v-container fluid>
         <v-row>
-          <aboutWindow
+          <!-- <aboutWindow
             v-show="show_about_window"
             @perma_hide_about="perma_hide_about"
-          />
-          <docGenRow v-show="!show_about_window" />
+          /> -->
+          <docGenRow />
         </v-row>
       </v-container>
     </v-main>
@@ -112,12 +105,12 @@ import { mdiCommentQuote } from "@mdi/js";
 import { mdiDelete } from "@mdi/js";
 import { mdiLanguagePhp } from "@mdi/js";
 import { mdiLanguageJavascript } from "@mdi/js";
-import aboutWindow from "./aboutWindow.vue";
+// import aboutWindow from "./aboutWindow.vue";
 import docGenRow from "./docGenRow.vue";
 
 export default {
   components: {
-    aboutWindow,
+    // aboutWindow,
     docGenRow,
   },
 

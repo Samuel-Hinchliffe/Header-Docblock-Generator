@@ -1,5 +1,5 @@
 <template>
-  <v-col>
+  <v-col class="col">
     <v-card class="elevation-12" rounded="lg">
       <v-toolbar dark>
         <v-toolbar-title class="v-center">Page Level DocBlock</v-toolbar-title>
