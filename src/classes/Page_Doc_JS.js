@@ -15,44 +15,7 @@
  export default class Page_Doc_JS extends Page_Doc {
    constructor(name) {
      super(name, "js");
- 
-     // Line vars
-     this.spacer = "   ";
-     this.company_name = "Medici";
-     this.author_name = "Machiavelli";
-     this.work_email = "machiavelli@medici.gov";
-     this.personal_email = "machii@hotmail.com";
-     this.personal_linkedin = "linkedin.com";
-     this.version = "1.2.1";
-     this.package = "Medici JWT APIs";
-     this.since_file_created = `${this.version}`;
-     this.see_summary_link = `https://en.wikipedia.org/wiki/Special:Random`;
-     this.summary = "A summary of this file. Whatever that may be. ";
-     this.created_at_time = "";
-     this.company_website = "www.google.com";
-     this.second_see_link = "www.phpdoc.org";
-     this.copyright = `Copyright (c) 1999-2022 ${this.company_name}`;
-     this.license = "Apache-2.0";
- 
-     // Alignment
- 
-     // Line enabled or not
-     this.created_by_enabled = true;
-     this.author_line_enabled = true;
-     this.linked_line_enabled = true;
-     this.version_line_enabled = true;
-     this.package_line_enabled = true;
-     this.since_file_created_line_enabled = true;
-     this.see_summary_link_enabled = true;
-     this.summary_enabled = true;
-     this.created_at_time_enabled = true;
-     this.company_website_enabled = true;
-     this.second_see_link_enabled = true;
-     this.copyright_enabled = true;
-     this.license_enabled = true;
- 
-     // Lines
-     this.build();
+     this.load_default()
    }
  
    clear_fields(){
@@ -78,7 +41,7 @@
    load_default(){
      // Line vars
      this.spacer = "   ";
-     this.company_name = "Medici";
+     this.company_name = "Mediciiiiiiiiiiiiiiiiii that hoe";
      this.author_name = "Machiavelli";
      this.work_email = "machiavelli@medici.gov";
      this.personal_email = "machii@hotmail.com";

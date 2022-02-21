@@ -78,4 +78,10 @@ a {
     fill: white;
   }
 }
+.v-application code,
+.v-application kbd {
+  border-radius: 3px;
+  font-size: unset;
+  font-weight: normal;
+}
 </style>

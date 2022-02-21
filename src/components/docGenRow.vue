@@ -40,7 +40,7 @@
       >
         <v-toolbar dark r class="v-center">
           <v-toolbar-title class="v-center">
-            <v-btn icon  v-on:click="go_back()" left>
+            <v-btn icon v-on:click="go_back()" left>
               <v-icon>{{ back_arrow }}</v-icon>
             </v-btn>
 
@@ -63,7 +63,12 @@
           </v-btn>
         </div>
         <div
-          style="display: flex; justify-content: center; flex-wrap: wrap"
+          style="
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            flex-direction: column;
+          "
           class="pa-5"
         >
           <v-row justify="space-around">
@@ -167,6 +172,15 @@
               </v-form>
             </v-col>
           </v-row>
+
+          <v-row>
+            <v-col cols="12" lg="6">
+              <v-text-field
+                label="Second See Link"
+                v-model="php_doc.second_see_link"
+              ></v-text-field>
+            </v-col>
+          </v-row>
         </div>
       </v-card>
 
@@ -203,6 +217,7 @@ import { mdiInformationOutline } from "@mdi/js";
 import { mdiLanguagePhp } from "@mdi/js";
 import { mdiLanguageJavascript } from "@mdi/js";
 import Page_Doc_PHP from "../classes/Page_Doc_PHP";
+import Page_Doc_JS from "../classes/Page_Doc_JS";
 import sampleDocGen from "./sampleDocGen.vue";
 import "vue-code-highlight/themes/duotone-sea.css";
 import Sample from "../classes/Sample.js";
@@ -229,6 +244,7 @@ export default {
     php_sample: Sample.sample_text_php,
     textblock: String,
     php_doc: Object,
+    js_doc: Object,
     doc_storage: new Docblock_Storage(),
 
     docblock_options: {
@@ -276,17 +292,23 @@ export default {
 
     js_selected() {
       this.docblock_options.docblock_lang = "js";
-      this.docblock_options.textblock = "JAAAAAAAAAAAAAAAAAAAAAVA";
       this.language_picked = true;
+
+      // Is this already populated?
+      if (this.doc_storage?.Docblock_Storage?.name === "script 2") {
+        this.js_doc = new Page_Doc_JS("script 2");
+        this.js_doc.load_from_storage(this.js_doc.Docblock_Storage);
+      } else {
+        this.js_doc = new Page_Doc_JS("script 2");
+        this.docblock_options.textblock = this.js_doc.init_text();
+        console.log(this.js_doc);
+      }
     },
     php_selected() {
-      console.log("php selected");
       this.docblock_options.docblock_lang = "php";
       this.language_picked = true;
 
       // Is this already populated?
-      console.log("sam lookey");
-      console.log(this.doc_storage);
       if (this.doc_storage?.Docblock_Storage?.name === "script 1") {
         this.php_doc = new Page_Doc_PHP("script 1");
         this.php_doc.load_from_storage(this.doc_storage.Docblock_Storage);
