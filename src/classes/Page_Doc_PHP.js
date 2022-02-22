@@ -10,6 +10,7 @@
  * Created at: 12/02/2022
  */
 
+
 import Page_Doc from "./Page_Doc";
 
 export default class Page_Doc_PHP extends Page_Doc {
@@ -226,6 +227,6 @@ export default class Page_Doc_PHP extends Page_Doc {
     return `/** ${this.line_created_by_company}${this.line_author}${this.line_linkedin}
    *${this.line_version}${this.line_package}${this.line_since_file_created}${this.line_summary_link}${this.line_summary}
    * ${this.line_created_at_time}${this.line_company_website}${this.line_second_see_line}${this.line_copyright}${this.line_license}
-   */`;
+  */`;
   }
 }

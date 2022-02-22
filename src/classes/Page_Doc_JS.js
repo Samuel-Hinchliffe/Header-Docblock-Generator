@@ -19,7 +19,7 @@
    }
  
    clear_fields(){
-     this.spacer = "   ";
+    this.spacer = "   ";
      this.company_name = "";
      this.author_name = "";
      this.work_email = "";
@@ -41,19 +41,19 @@
    load_default(){
      // Line vars
      this.spacer = "   ";
-     this.company_name = "Mediciiiiiiiiiiiiiiiiii that hoe";
-     this.author_name = "Machiavelli";
-     this.work_email = "machiavelli@medici.gov";
-     this.personal_email = "machii@hotmail.com";
+     this.company_name = "Psyche Ltd";
+     this.author_name = "Carl Jung";
+     this.work_email = "persona@psyche.io";
+     this.personal_email = "self@protonmail.com";
      this.personal_linkedin = "linkedin.com";
-     this.version = "1.2.1";
-     this.package = "Medici JWT APIs";
+     this.version = "2.2.1";
+     this.package = "Psyche APIs";
      this.since_file_created = `${this.version}`;
      this.see_summary_link = `https://en.wikipedia.org/wiki/Special:Random`;
      this.summary = "A summary of this file. Whatever that may be. ";
      this.created_at_time = "";
      this.company_website = "www.google.com";
-     this.second_see_link = "www.phpdoc.org";
+     this.second_see_link = "jsdoc.app";
      this.copyright = `Copyright (c) 1999-2022 ${this.company_name}`;
      this.license = "Apache-2.0";
  
@@ -137,13 +137,13 @@
  
    generate_second_see_link() {
      if (this.second_see_link && this.second_see_link_enabled) {
-       return `\n${this.spacer}* @see ${this.second_see_link}`;
+       return `\n${this.spacer}* @see {@link ${this.second_see_link}}`;
      }
    }
  
    generate_company_website() {
      if (this.company_website_enabled && this.company_website) {
-       return `\n${this.spacer}* @see ${this.company_website} Website`;
+       return `\n${this.spacer}* @see {@link ${this.company_website}} | Website }`;
      }
    }
  
@@ -159,13 +159,13 @@
  
    generate_see_summary() {
      if (this.summary && this.summary_enabled) {
-       return `\n${this.spacer}* @overview ${this.summary}`;
+       return `\n${this.spacer}* @file ${this.summary}`;
      }
    }
  
    generate_see_summary_link() {
      if (this.see_summary_link && this.see_summary_link_enabled) {
-       return `\n${this.spacer}* @see ${this.see_summary_link}`;
+       return `\n${this.spacer}* @see {@link ${this.see_summary_link} }`;
      }
    }
  
@@ -178,7 +178,7 @@
  
    generate_package() {
      if (this.package && this.package_line_enabled) {
-       return `\n${this.spacer}* @package ${this.package}`;
+       return `\n${this.spacer}* @module ${this.package}`;
      }
    }
  
@@ -197,7 +197,7 @@
    generate_personal_linkedin() {
      if (this.linked_line_enabled) {
        return this.personal_linkedin
-         ? `\n${this.spacer}* @link   ${this.personal_linkedin} Author's Linkedin `
+         ? `\n${this.spacer}* @see    {@link ${this.personal_linkedin} | Author's Linkedin }`
          : "";
      }
    }
@@ -223,10 +223,10 @@
    }
  
    init_text() {
-     return `/** ${this.line_created_by_company}${this.line_author}${this.line_linkedin}
-    *${this.line_version}${this.line_package}${this.line_since_file_created}${this.line_summary_link}${this.line_summary}
-    * ${this.line_created_at_time}${this.line_company_website}${this.line_second_see_line}${this.line_copyright}${this.line_license}
-    */`;
+     return `/**${this.line_created_by_company}${this.line_author}${this.line_linkedin}
+   *${this.line_version}${this.line_package}${this.line_since_file_created}${this.line_summary_link}${this.line_summary}
+   *${this.line_created_at_time}${this.line_company_website}${this.line_second_see_line}${this.line_copyright}${this.line_license}
+   */`;
    }
  }
  

@@ -12,6 +12,7 @@ export default class Docblock_Storage {
   constructor(docBlock_class = null) {
     this.docBlock_class = docBlock_class;
     this.Docblock_Storage = this.get_docblock_from_local();
+    this.Docblock_Storage_js = this.js_docblock_get();
   }
 
   get_docblock_from_local() {
@@ -19,6 +20,21 @@ export default class Docblock_Storage {
 
     try {
       localstorage_Docblocks = JSON.parse(localStorage.getItem("php_doc"));
+    } catch (error) {
+      console.log(error);
+      console.log("Not valid or no docblocks.");
+    }
+
+    console.log(localstorage_Docblocks);
+
+    return localstorage_Docblocks;
+  }
+
+  js_docblock_get() {
+    let localstorage_Docblocks = null;
+
+    try {
+      localstorage_Docblocks = JSON.parse(localStorage.getItem("js_doc"));
     } catch (error) {
       console.log(error);
       console.log("Not valid or no docblocks.");

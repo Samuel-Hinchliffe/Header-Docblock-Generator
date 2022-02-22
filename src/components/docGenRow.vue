@@ -194,14 +194,145 @@
             <v-btn icon v-on:click="go_back()" left>
               <v-icon>{{ back_arrow }}</v-icon>
             </v-btn>
-          </v-toolbar-title>
+
+            Javascript Options</v-toolbar-title
+          >
         </v-toolbar>
         <v-card-text
-          >Pick a language in which you wish to generate your page level doc
-        </v-card-text>
-        <v-card-text style="display: flex; justify-content: center">
-          I AM THE JS
-        </v-card-text>
+          >Fill out the details below and watch the DocBlock automatically
+          update</v-card-text
+        >
+        <div
+          style="display: flex; justify-content: space-evenly; flex-wrap: wrap"
+          class="pa-1"
+        >
+          <v-btn depressed color="primary" v-on:click="js_doc.clear_fields()">
+            Clear Form
+          </v-btn>
+          <v-btn depressed color="primary" v-on:click="js_doc.load_default()">
+            Restore Default
+          </v-btn>
+        </div>
+        <div
+          style="
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            flex-direction: column;
+          "
+          class="pa-5"
+        >
+          <v-row justify="space-around">
+            <v-col cols="12" lg="6">
+              <v-text-field
+                label="Company Name"
+                v-model="js_doc.company_name"
+              ></v-text-field>
+            </v-col>
+            <v-col cols="12" lg="6">
+              <v-form ref="form">
+                <v-text-field
+                  label="Author Name"
+                  v-model="js_doc.author_name"
+                ></v-text-field>
+              </v-form>
+            </v-col>
+          </v-row>
+
+          <v-row justify="space-around">
+            <v-col cols="12" lg="6">
+              <v-text-field
+                label="Work Email"
+                v-model="js_doc.work_email"
+              ></v-text-field>
+            </v-col>
+            <v-col cols="12" lg="6">
+              <v-form ref="form">
+                <v-text-field
+                  label="Personal Email"
+                  v-model="js_doc.personal_email"
+                ></v-text-field>
+              </v-form>
+            </v-col>
+          </v-row>
+
+          <v-row justify="space-around">
+            <v-col cols="12" lg="6">
+              <v-text-field
+                label="Personal Linkedin URL"
+                v-model="js_doc.personal_linkedin"
+              ></v-text-field>
+            </v-col>
+            <v-col cols="12" lg="6">
+              <v-form ref="form">
+                <v-text-field
+                  label="Software Version"
+                  v-model="js_doc.version"
+                ></v-text-field>
+              </v-form>
+            </v-col>
+          </v-row>
+
+          <v-row justify="space-around">
+            <v-col cols="12" lg="6">
+              <v-text-field
+                label="Namespace / Module"
+                v-model="js_doc.package"
+              ></v-text-field>
+            </v-col>
+            <v-col cols="12" lg="6">
+              <v-form ref="form">
+                <v-text-field
+                  label="Summary See URL"
+                  v-model="js_doc.see_summary_link"
+                ></v-text-field>
+              </v-form>
+            </v-col>
+          </v-row>
+
+          <v-row justify="space-around">
+            <v-col cols="12" lg="6">
+              <v-text-field
+                label="Company Website"
+                v-model="js_doc.company_website"
+              ></v-text-field>
+            </v-col>
+            <v-col cols="12" lg="6">
+              <v-form ref="form">
+                <v-text-field
+                  label="Copyright Date"
+                  v-model="js_doc.copyright"
+                ></v-text-field>
+              </v-form>
+            </v-col>
+          </v-row>
+
+          <v-row justify="space-around">
+            <v-col cols="12" lg="6">
+              <v-text-field
+                label="Licence"
+                v-model="js_doc.license"
+              ></v-text-field>
+            </v-col>
+            <v-col cols="12" lg="6">
+              <v-form ref="form">
+                <v-text-field
+                  label="Summary"
+                  v-model="js_doc.summary"
+                ></v-text-field>
+              </v-form>
+            </v-col>
+          </v-row>
+
+          <v-row>
+            <v-col cols="12" lg="6">
+              <v-text-field
+                label="Second See Link"
+                v-model="js_doc.second_see_link"
+              ></v-text-field>
+            </v-col>
+          </v-row>
+        </div>
       </v-card>
     </v-col>
 
@@ -264,6 +395,17 @@ export default {
         this.doc_storage.add_2_local_storage(this.php_doc, "php_doc");
       },
     },
+
+    js_doc: {
+      // This will let Vue know to look inside the array
+      deep: true,
+
+      // We have to move our method to a handler field
+      handler() {
+        this.docblock_options.textblock = this.js_doc.build();
+        this.doc_storage.add_2_local_storage(this.js_doc, "js_doc");
+      },
+    },
   },
 
   methods: {
@@ -295,9 +437,9 @@ export default {
       this.language_picked = true;
 
       // Is this already populated?
-      if (this.doc_storage?.Docblock_Storage?.name === "script 2") {
+      if (this.doc_storage?.Docblock_Storage_js?.name === "script 2") {
         this.js_doc = new Page_Doc_JS("script 2");
-        this.js_doc.load_from_storage(this.js_doc.Docblock_Storage);
+        this.js_doc.load_from_storage(this.doc_storage.Docblock_Storage_js);
       } else {
         this.js_doc = new Page_Doc_JS("script 2");
         this.docblock_options.textblock = this.js_doc.init_text();
