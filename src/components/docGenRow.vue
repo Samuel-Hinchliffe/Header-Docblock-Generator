@@ -459,7 +459,6 @@ export default {
       } else {
         this.js_doc = new Page_Doc_JS("script 2");
         this.docblock_options.textblock = this.js_doc.init_text();
-        console.log(this.js_doc);
       }
     },
     php_selected() {
@@ -473,7 +472,6 @@ export default {
       } else {
         this.php_doc = new Page_Doc_PHP("script 1");
         this.docblock_options.textblock = this.php_doc.init_text();
-        console.log(this.php_doc);
       }
     },
   },

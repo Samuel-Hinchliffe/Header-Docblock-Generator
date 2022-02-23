@@ -28,7 +28,6 @@ export default class Docblock_Storage {
       console.log("Not valid or no docblocks.");
     }
 
-    console.log(localstorage_Docblocks);
 
     return localstorage_Docblocks;
   }
@@ -40,10 +39,8 @@ export default class Docblock_Storage {
       localstorage_Docblocks = JSON.parse(localStorage.getItem("js_doc"));
     } catch (error) {
       console.log(error);
-      console.log("Not valid or no docblocks.");
     }
 
-    console.log(localstorage_Docblocks);
 
     return localstorage_Docblocks;
   }
