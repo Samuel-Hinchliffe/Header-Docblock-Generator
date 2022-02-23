@@ -1,7 +1,6 @@
 <template>
   <v-app id="inspire">
     <v-app-bar app flat> </v-app-bar>
-
     <v-main>
       <v-container>
         <v-row>
@@ -27,7 +26,22 @@
     </v-main>
   </v-app>
 </template>
-<script></script>
+<script>
+/**
+ * @author Samuel Hinchliffe <sam.hinchliffe.work@gmail.com>
+ * @see    {@link linkedin.com/in/samuel-hinchliffe-🚀-2bb5801a5/ | Author's Linkedin }
+ *
+ * @version 1.0.0
+ * @since File available since Release 1.0.0
+ * @see {@link https://github.com/Samuel-Hinchliffe/Header-Docblock-Generator }
+ * @file This file is what's shown to mobile users. < 768px. The reason for this is because.
+ * I don't want users to use application that will leave them with a sour experience. This application
+ * will do that on mobile.
+ *
+ * Created at: 23/2/2022
+ * @license MIT
+ */
+</script>
 
 <style lang="scss">
 a {

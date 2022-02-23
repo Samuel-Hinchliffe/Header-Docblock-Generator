@@ -6,7 +6,7 @@
     <img src="src/assets/ico.png" alt="Logo" width="120">
   </a>
 
-  <h3 align="center">DocGen Generator</h3>
+  <h3 align="center">Page Level DocBlock Generator</h3>
 
   <p align="center">
     <br />

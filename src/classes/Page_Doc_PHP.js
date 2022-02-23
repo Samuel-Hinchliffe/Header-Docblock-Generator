@@ -1,25 +1,29 @@
 /* The parent class */
-/* eslint-disable prettier/prettier */
 /**
  * @author Samuel Hinchliffe <sam.hinchliffe.work@gmail.com>
- * @see    [Linkedin] {@link https://www.linkedin.com/in/samuel-hinchliffe-2bb5801a5/}
+ * @see    {@link linkedin.com/in/samuel-hinchliffe-🚀-2bb5801a5/ | Author's Linkedin }
  *
- * @summary The parent class.
- * @todo Implement the base parent class.
+ * @version 1.0.0
+ * @since File available since Release 1.0.0
+ * @see {@link https://github.com/Samuel-Hinchliffe/Header-Docblock-Generator }
+ * @file This file is where we inherit the pageDoc class and generate a
+ * PHP Based page level doc. What we do here is to follow the rules and guidelines
+ * of PHPDocumentor to generate a header, footer and main content for a pagedoc.
+ * All eventually being saved in localstorage for future reading.
  *
- * Created at: 12/02/2022
+ * Created at: 23/2/2022
+ * @license MIT
  */
-
 
 import Page_Doc from "./Page_Doc";
 
 export default class Page_Doc_PHP extends Page_Doc {
   constructor(name) {
     super(name, "php");
-    this.load_default()
+    this.load_default();
   }
 
-  clear_fields(){
+  clear_fields() {
     this.spacer = "   ";
     this.company_name = "";
     this.author_name = "";
@@ -36,10 +40,10 @@ export default class Page_Doc_PHP extends Page_Doc {
     this.second_see_link = "";
     this.copyright = ``;
     this.license = "";
-    this.build()
+    this.build();
   }
 
-  load_default(){
+  load_default() {
     // Line vars
     this.spacer = "   ";
     this.company_name = "Medici";
@@ -79,15 +83,15 @@ export default class Page_Doc_PHP extends Page_Doc {
     this.build();
   }
 
-  load_from_storage(obj){
-    console.log('loading from storage');
-    console.log(obj)
+  load_from_storage(obj) {
+    console.log("loading from storage");
+    console.log(obj);
     this.spacer = obj.spacer;
     this.company_name = obj.company_name;
     this.author_name = obj.author_name;
     this.work_email = obj.work_email;
     this.personal_email = obj.personal_email;
-    this.personal_linkedin = obj.personal_linkedin
+    this.personal_linkedin = obj.personal_linkedin;
     this.version = obj.version;
     this.package = obj.package;
     this.since_file_created = obj.since_file_created;
@@ -96,7 +100,7 @@ export default class Page_Doc_PHP extends Page_Doc {
     this.created_at_time = obj.created_at_time;
     this.company_website = obj.company_website;
     this.second_see_link = obj.second_see_link;
-    this.copyright = obj.copyright
+    this.copyright = obj.copyright;
     this.license = obj.license;
 
     // Lines

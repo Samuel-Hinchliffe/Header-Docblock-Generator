@@ -1,17 +1,17 @@
 /**
- * Created by PRIME AI.
- * @author Samuel Hinchliffe <samuel@primeai.co.uk, sam.hinchliffe.work@gmail.com>
- * @see    [Linkedin] {@link https://www.linkedin.com/in/samuel-hinchliffe-2bb5801a5/}
+ * @author Samuel Hinchliffe <sam.hinchliffe.work@gmail.com>
+ * @see    {@link linkedin.com/in/samuel-hinchliffe-🚀-2bb5801a5/ | Author's Linkedin }
  *
- * @summary
+ * @version 1.0.0
+ * @since File available since Release 1.0.0
+ * @see {@link https://github.com/Samuel-Hinchliffe/Header-Docblock-Generator }
+ * @file This file is a class. For the most part, I tried to encapsulate what I could together
+ * as you would in Object Oriented applications. Although this file just serves as a
+ * static house of variables. Stored just for reading use.
  *
- * Created at: 12/02/2022
- * @see       [PRIME-AI GITHUB] {@link https://github.com/PRIME-AI-GITHUB}
- * @see       [Website]         {@link https://www.primeai.co.uk/}
- * @copyright 2018-2022 PRIME AI LTD
- */
-
-export default class Sample {
+ * Created at: 23/2/2022
+ * @license MIT
+ */ export default class Sample {
   static sample_text_js = `/** 
   * Created by Medici 
   * @author Machiavelli <machiavelli@medici.gov>
@@ -21,7 +21,7 @@ export default class Sample {
   * @version 1.2.1
   * @package Medici JWT APIs
   * @since File available since Release 1.2.1
-  * @see https://en.wikipedia.org/wiki/Special:Random
+  * @see https: //en.wikipedia.org/wiki/Special:Random
   * @overview A summary of this file. Whatever that may be. 
   * 
   * Created at: 18/2/2022
@@ -41,7 +41,7 @@ export default class Sample {
   * @version 1.2.1
   * @package Medici JWT APIs
   * @since File available since Release 1.2.1
-  * @see https://en.wikipedia.org/wiki/Special:Random
+  * @see https: //en.wikipedia.org/wiki/Special:Random
   * @overview A summary of this file. Whatever that may be. 
   * 
   * Created at: 18/2/2022

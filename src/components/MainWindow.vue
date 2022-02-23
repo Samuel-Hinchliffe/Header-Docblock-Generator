@@ -97,6 +97,20 @@
 </template>
 
 <script>
+/**
+ * @author Samuel Hinchliffe <sam.hinchliffe.work@gmail.com>
+ * @see    {@link linkedin.com/in/samuel-hinchliffe-🚀-2bb5801a5/ | Author's Linkedin }
+ *
+ * @version 1.0.0
+ * @since File available since Release 1.0.0
+ * @see {@link https://github.com/Samuel-Hinchliffe/Header-Docblock-Generator }
+ * @file This file encapsulates 2 main components. The finalDocGen window, which is a simple window
+ * which we pass text too. This text is then shown in the code format. All those fancy colors too.
+ *
+ * Created at: 23/2/2022
+ * @license MIT
+ */
+
 import { mdiGithub } from "@mdi/js";
 import { mdiLinkedin } from "@mdi/js";
 import { mdiHammer } from "@mdi/js";
@@ -105,7 +119,6 @@ import { mdiCommentQuote } from "@mdi/js";
 import { mdiDelete } from "@mdi/js";
 import { mdiLanguagePhp } from "@mdi/js";
 import { mdiLanguageJavascript } from "@mdi/js";
-// import aboutWindow from "./aboutWindow.vue";
 import docGenRow from "./docGenRow.vue";
 
 export default {

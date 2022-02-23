@@ -1,11 +1,15 @@
 /**
  * @author Samuel Hinchliffe <sam.hinchliffe.work@gmail.com>
- * @see    [Linkedin] {@link https://www.linkedin.com/in/samuel-hinchliffe-2bb5801a5/}
+ * @see    {@link linkedin.com/in/samuel-hinchliffe-🚀-2bb5801a5/ | Author's Linkedin }
  *
- * @summary The parent class.
- * @todo Implement the base parent class.
+ * @version 1.0.0
+ * @since File available since Release 1.0.0
+ * @see {@link https://github.com/Samuel-Hinchliffe/Header-Docblock-Generator }
+ * @file This file is used to serve us up the Pagedocs. This is stored in the localstorage
+ * so we can read from it and gather which Icon it should have, which docblock to have etc.
  *
- * Created at: 12/02/2022
+ * Created at: 23/2/2022
+ * @license MIT
  */
 
 /* eslint-disable prettier/prettier */
@@ -22,11 +26,11 @@ export default class Page_Doc {
 
   get_lang_icon() {
     switch (this.language) {
-      case "js" : 
+      case "js": 
         return mdiLanguageJavascript;
       case "php": 
         return mdiLanguagePhp;
-      default   : 
+      default: 
         break;
     }
   }

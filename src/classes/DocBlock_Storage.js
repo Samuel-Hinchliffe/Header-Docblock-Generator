@@ -1,13 +1,16 @@
 /**
  * @author Samuel Hinchliffe <sam.hinchliffe.work@gmail.com>
- * @see    [Linkedin] {@link https://www.linkedin.com/in/samuel-hinchliffe-2bb5801a5/}
+ * @see    {@link linkedin.com/in/samuel-hinchliffe-🚀-2bb5801a5/ | Author's Linkedin }
  *
- * @summary The parent class.
- * @todo Implement the base parent class.
+ * @version 1.0.0
+ * @since File available since Release 1.0.0
+ * @see {@link https://github.com/Samuel-Hinchliffe/Header-Docblock-Generator }
+ * @file This file is where we use a handful of function to read and write page docs
+ * to localstorage.
  *
- * Created at: 12/02/2022
+ * Created at: 23/2/2022
+ * @license MIT
  */
-
 export default class Docblock_Storage {
   constructor(docBlock_class = null) {
     this.docBlock_class = docBlock_class;
