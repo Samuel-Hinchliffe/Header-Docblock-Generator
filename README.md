@@ -3,7 +3,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/Samuel-Hinchliffe/Header-Docblock-Generator">
-    <img src="src/assets/ico.png" alt="Logo" width="80" height="80">
+    <img src="src/assets/ico.png" alt="Logo" width="120">
   </a>
 
   <h3 align="center">DocGen Generator</h3>
