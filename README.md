@@ -13,7 +13,7 @@
     <a href="https://github.com/Samuel-Hinchliffe/Header-Docblock-Generator"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/Samuel-Hinchliffe/Header-Docblock-Generator">View Demo</a>
+    <a href="https://header-docblock.netlify.app/">View Demo</a>
     ·
     <a href="https://github.com/Samuel-Hinchliffe/Header-Docblock-Generator/issues">Report Bug</a>
     ·
@@ -44,7 +44,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Product Name Screen Shot][product-screenshot]](https://header-docblock.netlify.app/)
 
 Have you ever wondered who made a file? What does the file do? When it was made? Who owns it and what its licence is? Today we normally just check the Github README.md to find out. It wasn't so long ago that most files had all of these details just at the top of the file. A greeting in the form of documentation. It told us everything we needed to know about this file without having to go deep into the code. 
 
